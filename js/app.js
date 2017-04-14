@@ -25,7 +25,22 @@
 
         //实现增加功能
         $scope.add = function() {
-            $scope.todos.push({ id: Math.random(), text: $scope.text, completed: false });
+        	if ($scope.text) {
+        		$scope.todos.push({ id: Math.random(), text: $scope.text, completed: false });
+        		$scope.text = '';
+        	}else{
+        		return;
+        	}
+            
+        };
+
+        //实现删除功能
+        $scope.del = function(id){
+        	for (var i = 0; i <$scope.todos.length; i++) {
+        		if (id===$scope.todos[i].id) {
+        			$scope.todos.splice(i,1);
+        		}
+        	}
         };
 
     }]);
