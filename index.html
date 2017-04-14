@@ -1,5 +1,5 @@
 <!-- <!DOCTYPE html> -->
-<html lang="en" ng-app="myApp" ng-controller="TodomvcController">
+<html lang="en" ng-app="myApp" ng-controller="TodomvcController" ng-click="save()">
 
 <head>
     <meta charset="UTF-8">
@@ -24,20 +24,22 @@
             <ul class="todo-list">
                 <!-- These are here just to show the structure of the list items -->
                 <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-                <li ng-repeat="todo in todos" ng-class="{completed:todo.completed}">
+                <li ng-repeat="todo in todos" ng-class="{completed:todo.completed,editing:todo.id===editId}">
                     <div class="view">
                         <input class="toggle" type="checkbox" ng-model="todo.completed">
-                        <label>{{todo.text}}</label>
+                        <label ng-dblclick="editing(todo.id)">{{todo.text}}</label>
                         <button class="destroy" ng-click="del(todo.id)"></button>
                     </div>
-                    <input class="edit" value="Create a TodoMVC template">
+                    <form ng-submit="save()">
+                    	<input class="edit" ng-model="todo.text">
+                    </form>
                 </li>
             </ul>
         </section>
         <!-- This footer should hidden by default and shown when there are todos -->
         <footer class="footer">
             <!-- This should be `0 items left` by default -->
-            <span class="todo-count"><strong>0</strong> item left</span>
+            <span class="todo-count"><strong>{{todos.length}}</strong> item left</span>
             <!-- Remove this if you don't implement routing -->
             <ul class="filters">
                 <li>
