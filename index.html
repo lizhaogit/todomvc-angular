@@ -1,5 +1,5 @@
 <!-- <!DOCTYPE html> -->
-<html lang="en">
+<html lang="en" ng-app="myApp" ng-controller="TodomvcController">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
-            <input class="new-todo" placeholder="What needs to be done?" autofocus>
+            <input class="new-todo" placeholder="What needs to be done?" ng-model="text" autofocus>
         </header>
         <!-- This section should be hidden by default and shown when there are todos -->
         <section class="main">
@@ -22,21 +22,13 @@
             <ul class="todo-list">
                 <!-- These are here just to show the structure of the list items -->
                 <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-                <li class="completed">
+                <li ng-repeat="todo in todos" ng-class="{completed:todo.completed}">
                     <div class="view">
-                        <input class="toggle" type="checkbox" checked>
-                        <label>Taste JavaScript</label>
+                        <input class="toggle" type="checkbox" ng-model="todo.completed">
+                        <label>{{todo.text}}</label>
                         <button class="destroy"></button>
                     </div>
                     <input class="edit" value="Create a TodoMVC template">
-                </li>
-                <li>
-                    <div class="view">
-                        <input class="toggle" type="checkbox">
-                        <label>Buy a unicorn</label>
-                        <button class="destroy"></button>
-                    </div>
-                    <input class="edit" value="Rule the web">
                 </li>
             </ul>
         </section>
@@ -69,6 +61,7 @@
         <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
     <!-- Scripts here. Don't remove ↓ -->
+    <script src="node_modules/angular/angular.js"></script>
     <script src="js/app.js"></script>
 </body>
 
