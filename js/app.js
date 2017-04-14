@@ -100,6 +100,21 @@
 			}
 			return false;
 		};
+
+		//全选按钮
+		var state = true;
+		$scope.allSele = function(){
+			for (var i = 0; i <$scope.todos.length; i++) {
+				$scope.todos[i].completed = state;
+			}
+			state = !state;
+		};
+
+		//底部切换
+		$scope.num = 1;
+		$scope.switch = function(num){
+			$scope.num = num;
+		};
 	}]);
 
 
