@@ -17,11 +17,16 @@
 
         //初始化列表数据
         $scope.todos = [
-            { id: 1, text: '吃饭', completed: true },
-            { id: 2, text: '睡觉', completed: true },
-            { id: 3, text: '上学', completed: false },
-            { id: 4, text: '打游戏', completed: false }
+            { id: Math.random(), text: '吃饭', completed: true },
+            { id: Math.random(), text: '睡觉', completed: true },
+            { id: Math.random(), text: '上学', completed: false },
+            { id: Math.random(), text: '打游戏', completed: false }
         ];
+
+        //实现增加功能
+        $scope.add = function() {
+            $scope.todos.push({ id: Math.random(), text: $scope.text, completed: false });
+        };
 
     }]);
 
