@@ -80,7 +80,26 @@
 			$scope.editId = -1;
 		};
 
+		//清空按钮
+		$scope.clear = function(){
+			var result = [];
+			for (var i = 0; i < $scope.todos.length; i++) {
+				if (!$scope.todos[i].completed) {
+					result.push($scope.todos[i]);
+				}
+			}
+			$scope.todos = result;
+		};
 
+		//控制清空按钮
+		$scope.exitCompleted = function(){
+			for (var i =0; i < $scope.todos.length; i++) {
+				if ($scope.todos[i].completed) {
+					return true;
+				}
+			}
+			return false;
+		};
 	}]);
 
 
